@@ -90,8 +90,6 @@ function vetersutil.all(tbl: {}): boolean
 	return false
 end
 
--- i don't even know if moonwave will return that tbh. 90/10 it doesn't.
--- hell, i don't even know what that is tbh.
 --[=[
 	Formats ``formatString`` and prints it to the output. Just a ``string.format`` wrapper lol.
 
@@ -130,7 +128,6 @@ function vetersutil.set(tbl: {}): {}
 	return newTbl
 end
 
--- i don't know if moonwave will let me group something with two tags. we're gonna find out.
 --[=[
 	Takes in ``tbl`` of strings and joins each string together using ``sep`` as a separator, then returns the new string. Set ``sep`` to an empty string for no separator.
 
