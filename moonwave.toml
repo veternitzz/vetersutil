@@ -1,8 +1,3 @@
-apiCategories = [
-    "General",
-    "Table"
-]
-
 [docusaurus]
 tagline = "A comprehensive utility library written in pure luau."
 
