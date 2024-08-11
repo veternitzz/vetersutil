@@ -1,5 +1,11 @@
 apiCategories = [
     "General",
-    "Table",
-    "String"
+    "Table"
 ]
+
+[docusaurus]
+tagline = "A comprehensive utility library written in pure luau."
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2024 veternitzz & contributors."

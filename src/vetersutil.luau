@@ -9,6 +9,22 @@
 -- // Library
 local vetersutil = {}
 
+-- // Classes
+
+--[=[
+	@class Table
+	Table utilities.
+]=]
+local Table = {}
+Table.__index = Table
+
+--[=[
+	@class General
+	General utilities.
+]=]
+local General = {}
+General.__index = General
+
 -- // Functions
 
 --[=[
@@ -17,6 +33,8 @@ local vetersutil = {}
 	@function any
 	@param tbl {} -- The table to check
 	@return boolean
+	@within Table
+	@tag Table
 ]=]
 function vetersutil.any(tbl: {}): boolean
 	local index = #tbl
@@ -40,10 +58,11 @@ end
 	@function all
 	@param tbl {} -- The table to check
 	@return boolean
-    @tag Table
+	@within Table
+	@tag Table
 ]=]
 function vetersutil.all(tbl: {}): boolean
-    -- TODO: Reformat this to make it more performant, it's quite slow atm.
+	-- TODO: Reformat this to make it more performant, it's quite slow atm.
 	local index = #tbl
 	local truths = 0
 	
@@ -74,25 +93,27 @@ end
 -- i don't even know if moonwave will return that tbh. 90/10 it doesn't.
 -- hell, i don't even know what that is tbh.
 --[=[
-    Formats ``formatString`` and prints it to the output. Just a ``string.format`` wrapper lol.
+	Formats ``formatString`` and prints it to the output. Just a ``string.format`` wrapper lol.
 
-    @function printf
-    @param formatString string -- The string to format
-    @param ... any -- The variables to format with
-    @return ()
-    @tag General
+	@function printf
+	@param formatString string -- The string to format
+	@param ... any -- The variables to format with
+	@return ()
+	@within General
+	@tag General
 ]=]
 function vetersutil.printf(formatString: string, ...: any): ()
 	print(string.format(formatString, ...))
 end
 
 --[=[
-    Returns a clone of `tbl`, having removed all duplicate values. Pulled this one straight from python.
+	Returns a clone of `tbl`, having removed all duplicate values. Pulled this one straight from python.
 
-    @function set
-    @param tbl {} -- The table to remove all duplicate values in
-    @return {}
-    @tag Table
+	@function set
+	@param tbl {} -- The table to remove all duplicate values in
+	@return {}
+	@within Table
+	@tag Table
 ]=]
 function vetersutil.set(tbl: {}): {}
 	local newTbl = table.clone(tbl)
@@ -111,14 +132,14 @@ end
 
 -- i don't know if moonwave will let me group something with two tags. we're gonna find out.
 --[=[
-    Takes in ``tbl`` of strings and joins each string together using ``sep`` as a separator, then returns the new string. Set ``sep`` to an empty string for no separator.
+	Takes in ``tbl`` of strings and joins each string together using ``sep`` as a separator, then returns the new string. Set ``sep`` to an empty string for no separator.
 
-    @function jstring
-    @param tbl {string} -- The table to join
-    @param sep string -- The separator to separate each string with
-    @return string
-    @tag String
-    @tag Table
+	@function jstring
+	@param tbl {string} -- The table to join
+	@param sep string -- The separator to separate each string with
+	@return string
+	@within Table
+	@tag Table
 ]=]
 function vetersutil.jstring(tbl: {string}, sep: string): string	
 	local str = ""
@@ -136,12 +157,14 @@ function vetersutil.jstring(tbl: {string}, sep: string): string
 end
 
 --[=[
-    Looks through ``tbl`` and returns all a table containing the values which are the type specified by ``Type``. Returns nil if none match ``Type``.
+	Looks through ``tbl`` and returns all a table containing the values which are the type specified by ``Type``. Returns nil if none match ``Type``.
 
-    @function getValuesOfType
-    @param tbl {} -- The table to look through
-    @param Type string -- The type to check for
-    @return {} | nil
+	@function getValuesOfType
+	@param tbl {} -- The table to look through
+	@param Type string -- The type to check for
+	@return {} | nil
+	@within Table
+	@tag Table
 ]=]
 function vetersutil.getValuesOfType(tbl: {}, Type: string): {} | nil
 	local values = {}
