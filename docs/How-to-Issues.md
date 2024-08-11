@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+--- 
+
+
 # How to Issues
 
 This file outlines how to report issues properly.
