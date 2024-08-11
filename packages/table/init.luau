@@ -6,7 +6,7 @@
 --[=[
 	@class Table
 
-    A collection of table utilities. Forked from sleitnick's tableutil.
+	A collection of table utilities. Forked from [sleitnick's tableutil](https://sleitnick.github.io/RbxUtil/api/TableUtil/)
 ]=]
 local Table = {}
 
@@ -21,7 +21,6 @@ local rng = Random.new()
 	@param tbl {} -- The table to remove all duplicate values in
 	@return {}
 	@within Table
-	@tag Table
 ]=]
 local function set(tbl: {}): {}
 	local newTbl = table.clone(tbl)
@@ -45,7 +44,6 @@ end
 	@param tbl {} -- The table to check
 	@return boolean
 	@within Table
-	@tag Table
 ]=]
 function any(tbl: {}): boolean
 	local index = #tbl
@@ -70,7 +68,6 @@ end
 	@param tbl {} -- The table to check
 	@return boolean
 	@within Table
-	@tag Table
 ]=]
 local function all(tbl: {}): boolean
 	-- TODO: Reformat this to make it more performant, it's quite slow atm.
@@ -109,7 +106,6 @@ end
 	@param Type string -- The type to check for
 	@return {} | nil
 	@within Table
-	@tag Table
 ]=]
 local function getValuesOfType(tbl: {}, Type: string): {} | nil
 	local values = {}
