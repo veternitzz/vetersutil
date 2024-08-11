@@ -8,4 +8,4 @@ This section outlines the basic installation and a list of available packages in
 
 ## Installation
 
-no installation steps atm
+All packages can be installed via wally. You can go to the "packages" section to see a full list of packages and their path in the wally index.
