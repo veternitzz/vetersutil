@@ -1,39 +1,39 @@
 --!strict
 
 --[=[
-    @ignore
-    @class Set
-    A class for creating and interacting with sets.
+	@ignore
+	@class Set
+	A class for creating and interacting with sets.
 
-    Sets are tables which can not contain any duplicates. Upon calling Set.new() it will return a Set which will contain a table object. This library also contains insert,
-    remove and clear function
+	Sets are tables which can not contain any duplicates. Upon calling Set.new() it will return a Set which will contain a table object. This library also contains insert,
+	remove and clear function
 
-    You should not insert, remove or clear the set by accessing the table object.
+	You should not insert, remove or clear the set by accessing the table object.
 ]=]
 local Set = {}
 Set.__index = Set
 
 --[=[
-    @ignore
-    @prop tbl {}
-    @within Set
-    A reference to the table used in a set.
+	@ignore
+	@prop tbl {}
+	@within Set
+	A reference to the table used in a set.
 ]=]
 
 --[=[
-    @ignore
-    @type Set {tbl: {}}
-    @within Set
-    A table which cannot contain any duplicates.
+	@ignore
+	@type Set {tbl: {}}
+	@within Set
+	A table which cannot contain any duplicates.
 ]=]
 export type Set = {tbl: {}}
 
 export type SetRemoveOptions = {value: any | nil, index: any | nil}
 
 --[=[
-    @ignore
-    @tag Constructor
-    @function new
+	@ignore
+	@tag Constructor
+	@function new
 	@within Set
 
 ]=]
