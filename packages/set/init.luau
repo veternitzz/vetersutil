@@ -34,6 +34,7 @@ export type SetRemoveOptions = {value: any | nil, index: any | nil}
     @ignore
     @tag Constructor
     @function new
+	@within Set
 
 ]=]
 function Set.new(tbl: {}): Set
