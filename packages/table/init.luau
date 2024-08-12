@@ -17,12 +17,12 @@ local rng = Random.new()
 --[=[
 	Returns a clone of `tbl`, having removed all duplicate values. Pulled this one straight from python.
 
-	@function set
+	@function nodupes
 	@param tbl {} -- The table to remove all duplicate values in
 	@return {}
 	@within Table
 ]=]
-local function set(tbl: {}): {}
+local function nodupes(tbl: {}): {}
 	local newTbl = table.clone(tbl)
 	local duplicates = {}
 	
@@ -1000,7 +1000,7 @@ end
 
 Table.any = any
 Table.all = all
-Table.set = set
+Table.nodupes = nodupes
 Table.getValuesOfType = getValuesOfType
 Table.copy = Copy
 Table.sync = Sync
