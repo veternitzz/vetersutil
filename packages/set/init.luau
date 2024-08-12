@@ -37,63 +37,73 @@ export type SetRemoveOptions = {value: any | nil, index: any | nil}
 
 ]=]
 function Set.new(tbl: {}): Set
-    local class = {}
-    class.tbl = tbl
-    return class
+	local class = {}
+	class.tbl = tbl
+	return class
 end
 
 function Set.insert(set: Set, value: any): ()
-    -- if we find a duplicate then return immediately
-    if table.find(set.tbl, value) then
-        return
-    end
-    
-    -- otherwise, define the current index we are at
-    local insertIndex = 0
-    
-    -- loop through the set's table to find the last written index
-    for i,v in ipairs(set.tbl) do
-        -- account for all the used indexes
-        insertIndex += 1
-    end
+	-- if we find a duplicate then return immediately
+	if table.find(set.tbl, value) then
+		return
+	end
 
-    -- add one to write to the last index
-    insertIndex += 1
+	-- otherwise, define the current index we are at
+	local insertIndex = 0
+	local overWroteNil = false
 
-    -- write to the last index
-    set.tbl[insertIndex] = value
-    return
+	-- loop through the set's table to find the last written index
+	for i,v in ipairs(set.tbl) do
+		-- lets check if v is nil and overWroteNil is false
+		if v == nil and not overWroteNil then
+			set.tbl[i] = value
+		else
+			-- otherwise account for all the used indexes
+			insertIndex += 1
+		end
+	end
+	
+	-- if we used a nil space then return
+	if overWroteNil then
+		return
+	end
+	
+	-- add one to write to the last index
+	insertIndex += 1
+
+	-- write to the last index
+	set.tbl[insertIndex] = value
+	return
 end
 
 function Set.remove(set: Set, options: SetRemoveOptions)
-    -- if index is not nil, then we can set the index in the table to nil and return 
-    if options.index ~= nil then
-        set.tbl[options.index] = nil
-        return
-    end
+	-- if index is not nil, then we can set the index in the table to nil and return 
+	if options.index ~= nil then
+		set.tbl[options.index] = nil
+		return
+	end
 
-    -- now, because no index was provided, if no value was provided there is nothing to search for and we should error
-    if options.value == nil then
-        error("did not provide index or value in Set.remove arg #2", 3)
-        return
-    end
+	-- now, because no index was provided, if no value was provided there is nothing to search for and we should error
+	if options.value == nil then
+		error("did not provide index or value in Set.remove arg #2", 3)
+		return
+	end
 
-    -- otherwise, loop through and find the value and remove it
-    for i,v in ipairs(set.tbl) do
-        if v == options.value then
-           set.tbl[i] = nil
-           return 
-        end
-    end
+	-- otherwise, loop through and find the value and remove it
+	for i,v in ipairs(set.tbl) do
+		if v == options.value then
+			set.tbl[i] = nil
+			return 
+		end
+	end
 
-    return
+	return
 end
 
 function Set.clear(set: Set)
-    -- all we have to do is loop through and set all values to 0
-    for i,v in ipairs(set.tbl) do
-        set.tbl[i] = nil
-    end
-
-    return
+	-- just call table.clear on the set's table and return
+	table.clear(set.tbl)
+	return
 end
+
+return Set
