@@ -6,7 +6,8 @@
 	A class for creating and interacting with sets.
 
 	Sets are tables which can not contain any duplicates. Upon calling Set.new() it will return a Set which will contain a table object. This library also contains insert,
-	remove and clear function
+	remove and clear function. Sets also make use of nil space in a table. If a value is inserted into a table and there is nil space, the nil space will be overwritten
+	by the value.
 
 	You should not insert, remove or clear the set by accessing the table object.
 ]=]
@@ -34,6 +35,8 @@ export type SetRemoveOptions = {value: any | nil, index: any | nil}
 	@ignore
 	@tag Constructor
 	@function new
+	@param tbl {} -- The table to initialize a set with. Leaving the table empty will initialize an empty set.
+	@return Set
 	@within Set
 
 ]=]
@@ -43,6 +46,16 @@ function Set.new(tbl: {}): Set
 	return class
 end
 
+--[=[
+	Inserts a ``value`` into the ``set`` and makes use of nil space.
+
+	@ignore
+	@function insert
+	@param set Set -- The set to insert ``value`` into
+	@param value any -- The value to insert into the ``set``
+	@return ()
+	@within Set
+]=]
 function Set.insert(set: Set, value: any): ()
 	-- if we find a duplicate then return immediately
 	if table.find(set.tbl, value) then
@@ -77,6 +90,15 @@ function Set.insert(set: Set, value: any): ()
 	return
 end
 
+--[=[
+	Removes either the ``index`` or the ``value`` based on ``options``.
+
+	@ignore
+	@function remove
+	@param set Set -- The set to remove from
+	@param options SetRemoveOptions -- The specified ``index`` or ``value`` to set to nil
+	@return ()
+]=]
 function Set.remove(set: Set, options: SetRemoveOptions)
 	-- if index is not nil, then we can set the index in the table to nil and return 
 	if options.index ~= nil then
@@ -100,6 +122,15 @@ function Set.remove(set: Set, options: SetRemoveOptions)
 
 	return
 end
+
+--[=[
+	Clears the set's ``tbl``.
+
+	@ignore
+	@function clear
+	@param set Set -- The set to clear
+	@return ()
+]=]
 
 function Set.clear(set: Set)
 	-- just call table.clear on the set's table and return

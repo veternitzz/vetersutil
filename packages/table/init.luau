@@ -14,6 +14,29 @@ local HttpService = game:GetService("HttpService")
 local rng = Random.new()
 
 
+local function most(tbl: {}, value: any): boolean
+	local keys = #tbl
+	
+	if keys == 0 then
+		return false
+	end
+
+	local timesValueWasFound = 0
+
+	for i,v in ipairs(tbl) do
+		if v == value then
+			timesValueWasFound += 1
+			keys -= 1
+		end
+	end
+
+	if timesValueWasFound > keys then
+		return true
+	end
+
+	return false
+end
+
 --[=[
 	Returns a clone of `tbl`, having removed all duplicate values. Pulled this one straight from python.
 
