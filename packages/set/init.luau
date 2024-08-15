@@ -1,7 +1,6 @@
 --!strict
 
 --[=[
-	@ignore
 	@class Set
 	A class for creating and interacting with sets.
 
@@ -15,24 +14,27 @@ local Set = {}
 Set.__index = Set
 
 --[=[
-	@ignore
 	@prop tbl {}
 	@within Set
 	A reference to the table used in a set.
 ]=]
 
 --[=[
-	@ignore
 	@type Set {tbl: {}}
 	@within Set
 	A table which cannot contain any duplicates.
 ]=]
 export type Set = {tbl: {}}
 
+
+--[=[
+	@type SetRemoveOptions {value: any | nil, index: numer | nil}
+	@within Set
+	Set.Remove() options. Takes in either a value or an index or both.
+]=]
 export type SetRemoveOptions = {value: any | nil, index: any | nil}
 
 --[=[
-	@ignore
 	@tag Constructor
 	@function new
 	@param tbl {} -- The table to initialize a set with. Leaving the table empty will initialize an empty set.
@@ -49,7 +51,6 @@ end
 --[=[
 	Inserts a ``value`` into the ``set`` and makes use of nil space.
 
-	@ignore
 	@function insert
 	@param set Set -- The set to insert ``value`` into
 	@param value any -- The value to insert into the ``set``
@@ -93,11 +94,11 @@ end
 --[=[
 	Removes either the ``index`` or the ``value`` based on ``options``.
 
-	@ignore
 	@function remove
 	@param set Set -- The set to remove from
 	@param options SetRemoveOptions -- The specified ``index`` or ``value`` to set to nil
 	@return ()
+	@within Set
 ]=]
 function Set.remove(set: Set, options: SetRemoveOptions): ()
 	-- if index is not nil, then we can set the index in the table to nil and return 
@@ -126,10 +127,10 @@ end
 --[=[
 	Clears the set's ``tbl``.
 
-	@ignore
 	@function clear
 	@param set Set -- The set to clear
 	@return ()
+	@within Set
 ]=]
 
 function Set.clear(set: Set): ()
