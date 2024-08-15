@@ -99,7 +99,7 @@ end
 	@param options SetRemoveOptions -- The specified ``index`` or ``value`` to set to nil
 	@return ()
 ]=]
-function Set.remove(set: Set, options: SetRemoveOptions)
+function Set.remove(set: Set, options: SetRemoveOptions): ()
 	-- if index is not nil, then we can set the index in the table to nil and return 
 	if options.index ~= nil then
 		set.tbl[options.index] = nil
@@ -132,7 +132,7 @@ end
 	@return ()
 ]=]
 
-function Set.clear(set: Set)
+function Set.clear(set: Set): ()
 	-- just call table.clear on the set's table and return
 	table.clear(set.tbl)
 	return
