@@ -1,0 +1,14 @@
+name: veternitzz/vt_set
+version: 0.1.0
+description: The veter's util set package.
+license: MIT
+authors:
+- veternitzz
+repository: https://github.com/veternitzz/vetersutil
+exports: {}
+path_style: !roblox
+  place: {}
+private: false
+realm: shared
+indices:
+  default: https://github.com/daimond113/pesde-index
