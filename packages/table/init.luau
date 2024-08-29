@@ -13,8 +13,24 @@ local Table = {}
 local HttpService = game:GetService("HttpService")
 local rng = Random.new()
 
+--[=[
+	@function most
+	@param tbl {} -- The table to check
+	@param value any -- The value to check for
+	@return boolean | number
+	@within Table
 
-local function most(tbl: {}, value: any): boolean
+	Checks if the given value is the majority of the keys in the table then returns a boolean
+	and the number of times it was found.
+
+	Usage Example:
+	```lua
+		print(most({5, 3, 6, 5, 5, 5}, 5)) -- true 4
+		print(most{5, 3, 6, 5, 5, 5}, 3)) -- false 1
+		print(most{5, 3, 6, 5, 5, 5,}, 2)) -- false 0
+	```
+]=]
+local function most(tbl: {}, value: any): boolean | number
 	local keys = #tbl
 	
 	if keys == 0 then
@@ -31,10 +47,10 @@ local function most(tbl: {}, value: any): boolean
 	end
 
 	if timesValueWasFound > keys then
-		return true
+		return true and timesValueWasFound
 	end
 
-	return false
+	return false and timesValueWasFound
 end
 
 --[=[
@@ -1021,6 +1037,7 @@ local function DecodeJSON(str: string): any
 	return HttpService:JSONDecode(str)
 end
 
+Table.most = most
 Table.any = any
 Table.all = all
 Table.nodupes = nodupes
