@@ -32,7 +32,7 @@ export type Set = {tbl: {}}
 	@within Set
 	Set.Remove() options. Takes in either a value or an index or both.
 ]=]
-export type SetRemoveOptions = {value: any | nil, index: number | nil}
+export type SetRemoveOptions = {value: any, index: number | nil}
 
 --[=[
 	@tag Constructor
