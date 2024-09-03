@@ -1,6 +1,6 @@
 [package]
 name = "veternitzz/vt-set"
-version = "rc1.0.0"
+version = "1.0.0"
 registry = "https://github.com/UpliftGames/wally-index"
 description = "The vetersutil set package."
 realm = "shared"
